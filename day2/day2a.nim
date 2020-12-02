@@ -1,7 +1,7 @@
 import strutils
 import sequtils
 
-func occurances(s: string, c:char): int =
+func occurances(s: string, c: char): int =
     for cc in s:
         if cc == c:
             result += 1
