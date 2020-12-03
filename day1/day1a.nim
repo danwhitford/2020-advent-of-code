@@ -24,11 +24,17 @@ proc combinations[T](a: openarray[T]; n: int): seq[seq[T]] =
 proc head[T](s: seq[T]): T =
   s[0]
 
+proc tap[T](s: openarray[T]; op: proc(x: openarray[T]) {.closure.}): seq[T] {.inline.} =
+  op(s)
+  s.toSeq
+
 let foo = readAll(stdin).splitLines()
   .map(parseInt)
-  .combinations(3)
+  .combinations(2)
   .filter(x => x.foldl(a + b) == 2020)
+  .tap((e: openarray[seq[int]]) => echo e)
   .map(x => x.foldl(a * b))
+  .tap((e: openarray[int]) => echo e)
   .head
 
 echo foo

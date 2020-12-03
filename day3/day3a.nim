@@ -10,7 +10,7 @@ let width = grid[0].high
 func charAt(grid: seq[seq[char]]; t: (int, int)): char =
     grid[t[0]][t[1]]
 
-proc move(pos: var (int, int), down: int, right: int) =
+proc move(pos: var (int, int); down: int; right: int) =
     var (v, h) = pos
     v += down
     h += right
@@ -19,7 +19,7 @@ proc move(pos: var (int, int), down: int, right: int) =
         h = h mod (width + 1)
     pos = (v, h)
 
-var pos = (0,0)
+var pos = (0, 0)
 var count = 0
 
 while pos[0] < height:
